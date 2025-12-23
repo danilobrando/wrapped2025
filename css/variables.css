@@ -1,0 +1,108 @@
+/* Design Tokens - Tribu iA 2025 Wrapped */
+
+:root {
+    /* ===== Brand Colors ===== */
+    --tribu-primary: #FF6B35;
+    --tribu-secondary: #6C5CE7;
+    --tribu-accent: #00D9FF;
+    --tribu-dark: #0F0F1E;
+    --tribu-dark-alt: #1A1A2E;
+    --tribu-dark-subtle: #2E3A59;
+    --tribu-light: #F8F9FA;
+    --tribu-white: #FFFFFF;
+
+    /* ===== Gradient Palettes ===== */
+    --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #6C5CE7 100%);
+    --gradient-purple-blue: linear-gradient(135deg, #6C5CE7 0%, #4834DF 100%);
+    --gradient-red-orange: linear-gradient(135deg, #FF3838 0%, #FF6B35 100%);
+    --gradient-green-cyan: linear-gradient(135deg, #1DD1A1 0%, #00D9FF 100%);
+    --gradient-orange-purple: linear-gradient(135deg, #FF6B35 0%, #6C5CE7 100%);
+    --gradient-blue-cyan: linear-gradient(135deg, #1B2A49 0%, #00D9FF 100%);
+    --gradient-gold-orange: linear-gradient(135deg, #FFC312 0%, #FF6B35 100%);
+    --gradient-dark: linear-gradient(180deg, #0F0F1E 0%, #1A1A2E 100%);
+    --gradient-accent: linear-gradient(90deg, #00D9FF 0%, #6C5CE7 100%);
+
+    /* ===== Typography ===== */
+    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Font Sizes - Fluid Typography */
+    --text-display: clamp(72px, 10vw, 120px);
+    --text-h1: clamp(40px, 5vw, 56px);
+    --text-h2: clamp(28px, 3vw, 40px);
+    --text-h3: clamp(24px, 2.5vw, 28px);
+    --text-body-lg: clamp(18px, 2vw, 20px);
+    --text-body: 16px;
+    --text-small: 14px;
+
+    /* Font Weights */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+
+    /* Line Heights */
+    --line-tight: 1.1;
+    --line-normal: 1.5;
+    --line-relaxed: 1.7;
+
+    /* ===== Spacing Scale ===== */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+    --spacing-2xl: 80px;
+    --spacing-3xl: 120px;
+
+    /* ===== Layout ===== */
+    --container-max: 1440px;
+    --slide-padding: clamp(24px, 5vw, 60px);
+
+    /* ===== Border Radius ===== */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* ===== Shadows ===== */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
+    --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.45);
+    --shadow-glow-purple: 0 0 40px rgba(108, 92, 231, 0.4);
+    --shadow-glow-orange: 0 0 40px rgba(255, 107, 53, 0.4);
+    --shadow-glow-cyan: 0 0 40px rgba(0, 217, 255, 0.4);
+
+    /* ===== Animations ===== */
+    --duration-fast: 200ms;
+    --duration-normal: 400ms;
+    --duration-slow: 600ms;
+    --easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --easing-in: cubic-bezier(0.4, 0, 1, 1);
+    --easing-out: cubic-bezier(0, 0, 0.2, 1);
+
+    /* ===== Z-Index Scale ===== */
+    --z-base: 0;
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+
+    /* ===== Breakpoints (for JS) ===== */
+    --breakpoint-mobile: 320px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+    --breakpoint-wide: 1440px;
+}
+
+/* Dark theme (default) */
+[data-theme="dark"] {
+    color-scheme: dark;
+}

@@ -1,0 +1,334 @@
+/* Global Base Styles */
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: var(--weight-regular);
+    line-height: var(--line-normal);
+    color: var(--tribu-light);
+    background: var(--tribu-dark);
+    overflow-x: hidden;
+}
+
+/* Typography Scale */
+.display {
+    font-family: var(--font-display);
+    font-size: var(--text-display);
+    font-weight: var(--weight-extrabold);
+    line-height: var(--line-tight);
+    letter-spacing: -0.02em;
+}
+
+h1,
+.h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    font-weight: var(--weight-bold);
+    line-height: var(--line-tight);
+    letter-spacing: -0.01em;
+}
+
+h2,
+.h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    line-height: var(--line-tight);
+}
+
+h3,
+.h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-semibold);
+    line-height: var(--line-normal);
+}
+
+.body-large {
+    font-size: var(--text-body-lg);
+    font-weight: var(--weight-medium);
+    line-height: var(--line-relaxed);
+}
+
+.body {
+    font-size: var(--text-body);
+    font-weight: var(--weight-regular);
+    line-height: var(--line-normal);
+}
+
+.small {
+    font-size: var(--text-small);
+    line-height: var(--line-normal);
+}
+
+/* Utility Classes */
+.text-white {
+    color: var(--tribu-white);
+}
+
+.text-light {
+    color: var(--tribu-light);
+}
+
+.text-primary {
+    color: var(--tribu-primary);
+}
+
+.text-secondary {
+    color: var(--tribu-secondary);
+}
+
+.text-accent {
+    color: var(--tribu-accent);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.font-body {
+    font-family: var(--font-body);
+}
+
+.weight-regular {
+    font-weight: var(--weight-regular);
+}
+
+.weight-medium {
+    font-weight: var(--weight-medium);
+}
+
+.weight-semibold {
+    font-weight: var(--weight-semibold);
+}
+
+.weight-bold {
+    font-weight: var(--weight-bold);
+}
+
+.weight-extrabold {
+    font-weight: var(--weight-extrabold);
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--slide-padding);
+}
+
+/* Flexbox Utilities */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-xs {
+    gap: var(--spacing-xs);
+}
+
+.gap-sm {
+    gap: var(--spacing-sm);
+}
+
+.gap-md {
+    gap: var(--spacing-md);
+}
+
+.gap-lg {
+    gap: var(--spacing-lg);
+}
+
+/* Grid Utilities */
+.grid {
+    display: grid;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Visibility */
+.hidden {
+    display: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+    animation: fadeIn var(--duration-normal) var(--easing);
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp var(--duration-slow) var(--easing);
+}
+
+.animate-fade-in-scale {
+    animation: fadeInScale var(--duration-slow) var(--easing);
+}
+
+.animate-pulse {
+    animation: pulse 2s var(--easing) infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Focus States */
+*:focus-visible {
+    outline: 2px solid var(--tribu-accent);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+/* Selection */
+::selection {
+    background: var(--tribu-secondary);
+    color: var(--tribu-white);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--tribu-dark-alt);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--tribu-dark-subtle);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--tribu-secondary);
+}
