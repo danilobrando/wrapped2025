@@ -8,6 +8,13 @@ body {
     color: var(--tribu-light);
     background: var(--tribu-dark);
     overflow-x: hidden;
+    /* Keep to prevent horizontal scroll from animations */
+    overflow-y: auto;
+    /* Explicitly allow vertical scroll */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* Typography Scale */
