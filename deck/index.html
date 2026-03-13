@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tribu iA — Deck 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN SYSTEM — TRIBU iA DECK
+   Award-class cinematic presentation
+   ═══════════════════════════════════════════ */
+
+:root {
+  --navy: #1B2A4A;
+  --navy-dark: #0D1B2E;
+  --bg-deep: #060A12;
+  --magenta: #D42257;
+  --magenta-light: #FF3672;
+  --yellow: #F5C518;
+  --yellow-soft: #FFD84D;
+  --cyan: #00D4FF;
+  --white: #FFFFFF;
+  --off-white: #E8EAF0;
+  --gray-400: #8B8B99;
+  --gray-700: #2A2A36;
+
+  --accent-tinkerers: #3B82F6;
+  --accent-agentes: #8B5CF6;
+  --accent-papers: #06B6D4;
+  --accent-product: #F59E0B;
+  --accent-igniters: #EF4444;
+  --accent-iafacil: #10B981;
+  --accent-vibe: #EC4899;
+  --accent-art: #F97316;
+  --accent-retos: #14B8A6;
+  --accent-podcast: #6366F1;
+
+  --font-head: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-accent: 'Playfair Display', Georgia, serif;
+
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-smooth: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SLIDE SYSTEM ── */
+.deck { width: 100%; height: 100%; position: relative; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s var(--ease-smooth), visibility 0s 0.9s;
+  overflow: hidden;
+}
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.9s var(--ease-smooth), visibility 0s 0s;
+  z-index: 10;
+}
+
+.slide__bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.slide__bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.slide__overlay {
+  position: absolute; inset: 0; z-index: 1;
+}
+.slide__content {
+  position: relative; z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* ── OVERLAYS ── */
+.ov-dark {
+  background: linear-gradient(135deg, rgba(6,10,18,0.93) 0%, rgba(13,27,46,0.82) 50%, rgba(6,10,18,0.88) 100%);
+}
+.ov-left {
+  background: linear-gradient(90deg, rgba(6,10,18,0.96) 0%, rgba(6,10,18,0.88) 42%, rgba(6,10,18,0.2) 100%);
+}
+.ov-bottom {
+  background: linear-gradient(180deg, rgba(6,10,18,0.15) 0%, rgba(6,10,18,0.6) 40%, rgba(6,10,18,0.97) 100%);
+}
+.ov-duotone {
+  background: linear-gradient(135deg, rgba(212,34,87,0.5) 0%, rgba(27,42,74,0.75) 100%);
+  mix-blend-mode: hard-light;
+}
+.ov-vignette::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(6,10,18,0.6) 100%);
+  pointer-events: none;
+}
+
+/* ── TYPOGRAPHY ── */
+.t-display {
+  font: 900 clamp(3.2rem,7vw,6.5rem)/0.95 var(--font-head);
+  letter-spacing: -0.03em;
+}
+.t-h1 {
+  font: 800 clamp(2rem,4.5vw,3.5rem)/1.08 var(--font-head);
+  letter-spacing: -0.02em;
+}
+.t-h2 {
+  font: 700 clamp(1.4rem,2.8vw,2.2rem)/1.2 var(--font-head);
+  letter-spacing: -0.01em;
+}
+.t-h3 {
+  font: 600 clamp(1rem,1.8vw,1.4rem)/1.3 var(--font-head);
+}
+.t-body {
+  font: 400 clamp(0.85rem,1.1vw,1.05rem)/1.7 var(--font-body);
+  color: var(--off-white);
+}
+.t-small {
+  font: 400 clamp(0.7rem,0.9vw,0.85rem)/1.5 var(--font-body);
+  color: var(--gray-400);
+}
+.t-metric {
+  font: 900 clamp(3.5rem,9vw,8rem)/1 var(--font-head);
+  letter-spacing: -0.04em;
+}
+.t-quote {
+  font: italic 400 clamp(1.4rem,3vw,2.4rem)/1.45 var(--font-accent);
+  color: var(--off-white);
+}
+
+/* ── ACCENT ELEMENTS ── */
+.slash { color: var(--yellow); }
+.magenta { color: var(--magenta); }
+.cyan { color: var(--cyan); }
+
+.tag {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  font: 500 0.7rem/1 var(--font-head);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.04);
+}
+
+.divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--magenta), var(--yellow));
+  border-radius: 2px;
+  margin: 20px 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+}
+
+/* ── GRID LAYOUTS ── */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.grid-4x3 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: center;
+  min-height: 100vh;
+}
+.split-60 {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ── CARDS ── */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s var(--ease-out), border-color 0.3s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.15);
+}
+.card--accent {
+  border-left: 3px solid var(--magenta);
+}
+
+/* ── ANIMATIONS ── */
+.anim {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.slide.active .anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide.active .anim:nth-child(1) { transition-delay: 0.1s; }
+.slide.active .anim:nth-child(2) { transition-delay: 0.2s; }
+.slide.active .anim:nth-child(3) { transition-delay: 0.3s; }
+.slide.active .anim:nth-child(4) { transition-delay: 0.4s; }
+.slide.active .anim:nth-child(5) { transition-delay: 0.5s; }
+.slide.active .anim:nth-child(6) { transition-delay: 0.6s; }
+.slide.active .anim:nth-child(7) { transition-delay: 0.7s; }
+.slide.active .anim:nth-child(8) { transition-delay: 0.8s; }
+.slide.active .anim:nth-child(9) { transition-delay: 0.9s; }
+.slide.active .anim:nth-child(10) { transition-delay: 1.0s; }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ── PROGRESS BAR ── */
+.progress {
+  position: fixed; bottom: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--magenta), var(--yellow));
+  z-index: 100;
+  transition: width 0.6s var(--ease-smooth);
+  box-shadow: 0 0 12px rgba(212,34,87,0.5);
+}
+
+/* ── SLIDE COUNTER ── */
+.counter {
+  position: fixed;
+  bottom: 20px; right: 30px;
+  font: 500 0.75rem/1 var(--font-head);
+  color: var(--gray-400);
+  z-index: 100;
+  letter-spacing: 0.1em;
+}
+
+/* ── LOGO ── */
+.logo-container {
+  position: fixed;
+  top: 28px; left: 36px;
+  z-index: 100;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+.logo-container:hover { opacity: 1; }
+.logo-container img {
+  height: 36px;
+  mix-blend-mode: screen;
+}
+
+/* ── NAV DOTS ── */
+.nav-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  border: none;
+  padding: 0;
+}
+.nav-dot.active {
+  background: var(--magenta);
+  box-shadow: 0 0 8px rgba(212,34,87,0.6);
+  height: 20px;
+  border-radius: 3px;
+}
+.nav-dot:hover { background: rgba(255,255,255,0.5); }
+.nav-dot.active:hover { background: var(--magenta); }
+
+/* ── SECTION-SPECIFIC STYLES ── */
+
+/* Slide 1 - Cover */
+.cover-logo {
+  height: clamp(48px, 6vw, 80px);
+  mix-blend-mode: screen;
+  margin-bottom: 32px;
+}
+.cover-tagline {
+  max-width: 800px;
+}
+.cover-meta {
+  position: absolute;
+  bottom: 48px; left: 80px;
+  display: flex; gap: 24px;
+}
+
+/* Slide 3 - Stats badges */
+.stats-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.stat-badge {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  min-width: 200px;
+}
+.stat-badge__number {
+  font: 900 clamp(2rem,4vw,3.5rem)/1 var(--font-head);
+  color: var(--yellow);
+  letter-spacing: -0.03em;
+}
+.stat-badge__label {
+  font: 400 0.85rem/1.4 var(--font-body);
+  color: var(--off-white);
+  margin-top: 8px;
+}
+
+/* Slide 5 - Values grid */
+.value-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.value-card__icon {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Slide 6 - Pillars */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.pillar {
+  padding: 36px 28px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  position: relative;
+}
+.pillar__num {
+  font: 900 4rem/1 var(--font-head);
+  color: rgba(255,255,255,0.06);
+  position: absolute;
+  top: 20px; right: 24px;
+}
+.pillar__connector {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  color: var(--yellow);
+  font-size: 1.5rem;
+  z-index: 5;
+}
+
+/* Slide 7 - Flywheel */
+.flywheel-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  justify-items: center;
+  width: min(800px, 85vw);
+  margin: 0 auto;
+}
+.flywheel-top    { grid-column: 2; grid-row: 1; text-align: center; }
+.flywheel-right  { grid-column: 3; grid-row: 2; text-align: center; }
+.flywheel-bottom { grid-column: 2; grid-row: 3; text-align: center; }
+.flywheel-left   { grid-column: 1; grid-row: 2; text-align: center; }
+.flywheel-ring {
+  grid-column: 2; grid-row: 2;
+  width: min(280px, 30vw);
+  height: min(280px, 30vw);
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.08);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.flywheel-ring::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(212,34,87,0.3);
+  animation: spin 20s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.flywheel-phase__icon { font-size: 1.5rem; margin-bottom: 6px; }
+.flywheel-phase__title { margin-bottom: 4px; }
+
+/* Slide 8 - Quote + steps */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+.step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.step__num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(212,34,87,0.2);
+  border: 1px solid var(--magenta);
+  display: flex; align-items: center; justify-content: center;
+  font: 700 0.8rem/1 var(--font-head);
+  color: var(--magenta);
+  flex-shrink: 0;
+}
+
+/* Slide 9 - Constellation */
+.constellation {
+  position: relative;
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+}
+.constellation__hub {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,34,87,0.3), transparent);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5;
+}
+.constellation__node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.constellation__dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px currentColor;
+}
+.constellation__label {
+  font: 500 0.7rem/1.2 var(--font-head);
+  white-space: nowrap;
+}
+.constellation__line {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+/* Slide 10-17 - Program template */
+.program-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 60px 80px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+.program-layout--reverse {
+  direction: rtl;
+}
+.program-layout--reverse > * {
+  direction: ltr;
+}
+.program__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.program__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.program__visual img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.program__metrics {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.program__metric {
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.program__metric strong {
+  color: var(--yellow);
+  font-family: var(--font-head);
+  font-weight: 800;
+}
+.format-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.format-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.format-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+.cities-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.city-badge {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font: 500 0.7rem/1 var(--font-head);
+  background: rgba(59,130,246,0.15);
+  border: 1px solid rgba(59,130,246,0.3);
+  color: #93C5FD;
+}
+
+/* Slide 18 - Map */
+.map-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.map-container svg { width: 100%; }
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+}
+.map-pin__dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 12px rgba(212,34,87,0.8);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.map-pin__dot--dev {
+  background: var(--gray-400);
+  box-shadow: 0 0 8px rgba(139,139,153,0.5);
+}
+.map-pin__name {
+  font: 600 0.6rem/1 var(--font-head);
+  white-space: nowrap;
+}
+
+/* Slide 20 - Metrics grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.metric-cell {
+  text-align: center;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.metric-cell__num {
+  font: 900 clamp(2.5rem,5vw,4rem)/1 var(--font-head);
+  background: linear-gradient(135deg, var(--magenta), var(--yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.metric-cell__label {
+  font: 400 0.85rem/1.4 var(--font-body);
+  color: var(--off-white);
+  margin-top: 8px;
+}
+
+/* Slide 21 - Startups */
+.startup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.startup-card {
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.startup-card__name {
+  font: 700 1rem/1.2 var(--font-head);
+}
+.startup-card__origin {
+  font: 400 0.7rem/1.3 var(--font-body);
+  color: var(--gray-400);
+}
+
+/* Slide 22-23 - People */
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.founder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+.avatar {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 1.8rem/1 var(--font-head);
+  border: 2px solid rgba(255,255,255,0.15);
+}
+.leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.leader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+.leader .avatar {
+  width: 56px; height: 56px;
+  font-size: 0.9rem;
+}
+
+/* Slide 24 - Partners - LIGHT THEME */
+.slide--light {
+  background: #F8F9FC;
+  color: #1a1a2e;
+}
+.slide--light .t-h1, .slide--light .t-h2, .slide--light .t-h3 { color: var(--navy); }
+.slide--light .t-body, .slide--light .t-small { color: #4a4a5a; }
+.partners-section {
+  margin-bottom: 28px;
+}
+.partners-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+.partner-badge {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(27,42,74,0.06);
+  border: 1px solid rgba(27,42,74,0.1);
+  font: 500 0.8rem/1 var(--font-head);
+  color: var(--navy);
+}
+
+/* Slide 26 - CTA */
+.cta-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.cta-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--white);
+  font: 500 0.85rem/1 var(--font-head);
+  transition: all 0.3s var(--ease-out);
+}
+.cta-link:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--magenta);
+  transform: translateY(-2px);
+}
+.cta-link__icon {
+  font-size: 1.2rem;
+}
+
+/* ── BG IMAGE PARALLAX EFFECT ── */
+.slide__bg img {
+  transition: transform 1.5s var(--ease-smooth), opacity 1.2s var(--ease-smooth);
+  transform: scale(1.05);
+}
+.slide.active .slide__bg img {
+  transform: scale(1);
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  position: absolute;
+  top: 28px;
+  right: 80px;
+  font: 500 0.65rem/1 var(--font-head);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  opacity: 0.5;
+  z-index: 50;
+}
+
+/* ── GENERATED IMAGE SPECIFIC ── */
+.gen-bg-subtle {
+  opacity: 0.2;
+  filter: saturate(0.8);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .slide__content { padding: 40px; }
+  .program-layout { padding: 40px; gap: 32px; }
+  .split, .split-60 { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .leaders-grid { grid-template-columns: repeat(3, 1fr); }
+  .constellation { width: 500px; height: 400px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGO -->
+<div class="logo-container">
+  <img src="../images/logo/Icono tribu IA fondo blanco.png" alt="Tribu iA">
+</div>
+
+<!-- NAVIGATION DOTS -->
+<div class="nav-dots" id="navDots"></div>
+
+<!-- PROGRESS BAR -->
+<div class="progress" id="progress"></div>
+
+<!-- COUNTER -->
+<div class="counter" id="counter"></div>
+
+<!-- ═══════════════════════════════════════════
+     DECK SLIDES
+     ═══════════════════════════════════════════ -->
+<div class="deck">
+
+<!-- ━━━ SLIDE 1: PORTADA ━━━ -->
+<section class="slide" data-section="Apertura">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_3445.jpeg" alt="" loading="eager">
+  </div>
+  <div class="slide__overlay ov-bottom ov-vignette"></div>
+  <div class="slide__content" style="justify-content:flex-end;padding-bottom:120px;">
+    <div class="anim">
+      <img src="../images/logo/Icono tribu IA fondo blanco.png" alt="Tribu iA" class="cover-logo">
+    </div>
+    <p class="t-quote anim cover-tagline" style="color:rgba(255,255,255,0.85);">
+      "Artesanos de la revolución más profunda que ha experimentado la humanidad"
+    </p>
+    <div class="cover-meta anim">
+      <span class="tag">Fundada noviembre 2023</span>
+      <span class="tag">Latinoamérica</span>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 2: EL PROBLEMA ━━━ -->
+<section class="slide" data-section="Apertura">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_3736.jpeg" alt="" loading="lazy">
+  </div>
+  <div class="slide__overlay ov-left"></div>
+  <div class="slide__content" style="max-width:55%;padding-right:0;">
+    <span class="tag anim">El problema</span>
+    <h1 class="t-h1 anim" style="margin-top:20px;">
+      Latinoamérica tiene el talento.<br><span class="slash">Le falta el ecosistema.</span>
+    </h1>
+    <div class="divider anim"></div>
+    <div style="display:flex;flex-direction:column;gap:16px;" class="anim">
+      <p class="t-body">Los avances en IA se publican y adoptan en días en Silicon Valley. En Latam, tardan meses — o no llegan.</p>
+      <p class="t-body">Los builders están dispersos, sin espacios para conectar, aprender y construir juntos.</p>
+      <p class="t-body">Las startups de IA en la región carecen de mentores, comunidad técnica y conexiones con la industria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 3: NUESTRA RESPUESTA ━━━ -->
+<section class="slide" data-section="Apertura">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_5321.jpeg" alt="" loading="lazy">
+  </div>
+  <div class="slide__overlay ov-dark"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Nuestra respuesta</span>
+    <h1 class="t-h1 anim" style="margin-top:20px;max-width:800px;">
+      Tribu iA es el ecosistema de IA<br>más activo de <span class="magenta">Latinoamérica</span>
+    </h1>
+    <p class="t-body anim" style="max-width:600px;margin-top:12px;">
+      Una comunidad viva donde el conocimiento fluye, se transforma en prototipos, los conceptos en productos, y las ideas en startups.
+    </p>
+    <div class="stats-row anim" style="margin-top:40px;">
+      <div class="stat-badge">
+        <span class="stat-badge__number" data-count="109">0</span>
+        <span class="stat-badge__label">eventos virtuales</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-badge__number" data-count="40" data-suffix="+">0</span>
+        <span class="stat-badge__label">encuentros presenciales</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-badge__number" data-count="2000" data-suffix="+">0</span>
+        <span class="stat-badge__label">AI builders conectados</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-badge__number">7</span>
+        <span class="stat-badge__label">ciudades en 4 países</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 4: NATURALEZA CREADORA ━━━ -->
+<section class="slide" data-section="Identidad">
+  <div class="slide__bg">
+    <img src="generated/community_art.png" alt="" loading="lazy" style="opacity:0.4;">
+  </div>
+  <div class="slide__overlay ov-dark"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Naturaleza creadora</span>
+    <h1 class="t-h1 anim" style="margin-top:24px;max-width:700px;">
+      No somos una estructura rígida.<br>Somos un <span class="magenta">organismo adaptativo.</span>
+    </h1>
+    <div class="divider anim" style="margin:28px auto;"></div>
+    <blockquote class="t-quote anim" style="max-width:700px;">
+      "En Tribu iA, el conocimiento no solo fluye, se transforma en <span class="slash">valor tangible.</span>"
+    </blockquote>
+    <p class="t-body anim" style="max-width:600px;margin-top:24px;">
+      Expertos y curiosos tejen juntos un tapiz donde las ideas se convierten en prototipos, los conceptos en productos, y los sueños en empresas que impactan la región.
+    </p>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 5: VALORES ━━━ -->
+<section class="slide" data-section="Identidad">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="slide__content">
+    <span class="tag anim">Lo que nos mueve</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 32px;">Valores emergentes</h2>
+    <div class="grid-2x2 anim">
+      <div class="card">
+        <div class="value-card">
+          <div class="value-card__icon" style="background:rgba(212,34,87,0.15);color:var(--magenta);">◈</div>
+          <h3 class="t-h3">Democratización del conocimiento</h3>
+          <p class="t-body">Acceso universal. Educadores que educan educadores. Recursos adaptados a cada nivel.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="value-card">
+          <div class="value-card__icon" style="background:rgba(245,197,24,0.15);color:var(--yellow);">⬡</div>
+          <h3 class="t-h3">Innovación responsable</h3>
+          <p class="t-body">Balance entre avance tecnológico y beneficio social. Impacto a largo plazo.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="value-card">
+          <div class="value-card__icon" style="background:rgba(0,212,255,0.15);color:var(--cyan);">◎</div>
+          <h3 class="t-h3">Colaboración transformadora</h3>
+          <p class="t-body">Sinergias entre disciplinas. Aprendizaje colectivo. Redes de apoyo y crecimiento.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="value-card">
+          <div class="value-card__icon" style="background:rgba(16,185,129,0.15);color:var(--accent-iafacil);">✦</div>
+          <h3 class="t-h3">Diversidad e inclusión</h3>
+          <p class="t-body">Espacios seguros, oportunidades equitativas de participación y liderazgo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 6: LOS 3 PILARES ━━━ -->
+<section class="slide" data-section="Identidad">
+  <div class="slide__bg">
+    <img src="generated/abstract_tech.png" alt="" loading="lazy" style="opacity:0.2;">
+  </div>
+  <div class="slide__content">
+    <span class="tag anim">Tres pilares de transformación</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 36px;">De aprender a <span class="slash">crear valor</span></h2>
+    <div class="pillars anim">
+      <div class="pillar">
+        <span class="pillar__num">01</span>
+        <h3 class="t-h3" style="color:var(--cyan);">Democratización activa</h3>
+        <div class="divider" style="margin:12px 0;background:var(--cyan);width:32px;"></div>
+        <p class="t-body">Acceso al conocimiento a través de múltiples canales. Lo teórico se convierte en experiencias prácticas y aplicables.</p>
+        <span class="pillar__connector">→</span>
+      </div>
+      <div class="pillar">
+        <span class="pillar__num">02</span>
+        <h3 class="t-h3" style="color:var(--magenta);">Construcción</h3>
+        <div class="divider" style="margin:12px 0;background:var(--magenta);width:32px;"></div>
+        <p class="t-body">Proyectos prácticos que resuelven problemas reales. Las ideas se convierten en prototipos funcionales.</p>
+        <span class="pillar__connector">→</span>
+      </div>
+      <div class="pillar">
+        <span class="pillar__num">03</span>
+        <h3 class="t-h3" style="color:var(--yellow);">Creación de valor</h3>
+        <div class="divider" style="margin:12px 0;background:var(--yellow);width:32px;"></div>
+        <p class="t-body">Ideas → proyectos viables → startups de IA. Conexión entre builders y oportunidades de mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 7: CICLO DE VALOR ━━━ -->
+<section class="slide" data-section="Cómo funciona">
+  <div class="slide__bg">
+    <img src="generated/neural_bg.png" alt="" loading="lazy" style="opacity:0.15;">
+  </div>
+  <div class="slide__content" style="align-items:center;">
+    <span class="tag anim">De la conexión al impacto</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 32px;">Ciclo de valor</h2>
+    <div class="flywheel-grid anim">
+      <div class="flywheel-top">
+        <div class="flywheel-phase__icon">🔗</div>
+        <h3 class="t-h3 flywheel-phase__title" style="color:var(--cyan);">Conectar</h3>
+        <p class="t-small">Personas con diversas disciplinas. Aprendizaje estructurado.</p>
+      </div>
+      <div class="flywheel-left">
+        <div class="flywheel-phase__icon">🚀</div>
+        <h3 class="t-h3 flywheel-phase__title" style="color:var(--yellow);">Escalar</h3>
+        <p class="t-small">Lanzamiento al mercado. Startups tecnológicas.</p>
+      </div>
+      <div class="flywheel-ring">
+        <div style="text-align:center;">
+          <span style="font-size:2rem;">⟳</span>
+          <p class="t-small" style="margin-top:4px;">Retroalimentación<br>continua</p>
+        </div>
+      </div>
+      <div class="flywheel-right">
+        <div class="flywheel-phase__icon">⚗️</div>
+        <h3 class="t-h3 flywheel-phase__title" style="color:var(--accent-agentes);">Experimentar</h3>
+        <p class="t-small">Proyectos piloto, prototipos funcionales, iteración.</p>
+      </div>
+      <div class="flywheel-bottom">
+        <div class="flywheel-phase__icon">🎯</div>
+        <h3 class="t-h3 flywheel-phase__title" style="color:var(--magenta);">Identificar</h3>
+        <p class="t-small">Qué productos vale la pena construir. Product management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 8: MODELO DE LIDERAZGO ━━━ -->
+<section class="slide" data-section="Cómo funciona">
+  <div class="slide__bg">
+    <img src="../images/community/c6749662-9b68-449b-abdb-82be9f0e6e72.jpeg" alt="" loading="lazy" style="filter:blur(8px) brightness(0.25);transform:scale(1.05);">
+  </div>
+  <div class="slide__overlay ov-dark" style="opacity:0.5;"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Modelo de liderazgo</span>
+    <blockquote class="t-quote anim" style="max-width:700px;margin-top:28px;font-size:clamp(1.6rem,3.5vw,2.8rem);">
+      "Yo solo pongo la semilla y las personas hacen que <span class="slash">germine.</span>"
+    </blockquote>
+    <p class="t-small anim" style="margin-top:12px;">— Danny Bravo, Fundador</p>
+    <div class="steps anim" style="max-width:520px;text-align:left;margin-top:40px;">
+      <div class="step">
+        <div class="step__num">1</div>
+        <p class="t-body">Se identifica una oportunidad o necesidad</p>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <p class="t-body">Se busca un líder que se apasione por la iniciativa</p>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <p class="t-body">Se forma orgánicamente un equipo de coordinación</p>
+      </div>
+      <div class="step">
+        <div class="step__num">4</div>
+        <p class="t-body">El equipo tiene autonomía para diseñar y ejecutar</p>
+      </div>
+      <div class="step">
+        <div class="step__num">5</div>
+        <p class="t-body">El ecosistema de Tribu iA da soporte: comunidad, canales, eventos, marca</p>
+      </div>
+    </div>
+    <p class="t-small anim" style="margin-top:28px;max-width:500px;">
+      Cualquier persona puede proponer y liderar una nueva iniciativa. No hay jerarquías, hay compromiso.
+    </p>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 9: MAPA DE PROGRAMAS ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg">
+    <img src="generated/neural_bg.png" alt="" loading="lazy" style="opacity:0.25;">
+  </div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Un ecosistema, múltiples caminos</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 8px;">Mapa de programas</h2>
+    <p class="t-small anim" style="margin-bottom:24px;max-width:500px;">Cada programa nació de una necesidad real y es liderado por voluntarios apasionados.</p>
+    <div class="constellation anim">
+      <!-- SVG connecting lines -->
+      <svg class="constellation__line" viewBox="0 0 700 500">
+        <line x1="350" y1="250" x2="350" y2="50" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="580" y2="80" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="630" y2="250" stroke="rgba(6,182,212,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="580" y2="420" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="350" y2="460" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="120" y2="420" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="70" y2="250" stroke="rgba(236,72,153,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="120" y2="80" stroke="rgba(249,115,22,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="200" y2="140" stroke="rgba(20,184,166,0.3)" stroke-width="1"/>
+        <line x1="350" y1="250" x2="500" y2="140" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+      </svg>
+      <!-- Hub center -->
+      <div class="constellation__hub">
+        <img src="../images/logo/Icono tribu IA fondo blanco.png" alt="" style="height:40px;mix-blend-mode:screen;">
+      </div>
+      <!-- Nodes -->
+      <div class="constellation__node" style="top:50px;left:350px;">
+        <div class="constellation__dot" style="color:var(--accent-tinkerers);background:var(--accent-tinkerers);"></div>
+        <span class="constellation__label">AI Tinkerers</span>
+      </div>
+      <div class="constellation__node" style="top:80px;left:580px;">
+        <div class="constellation__dot" style="color:var(--accent-agentes);background:var(--accent-agentes);"></div>
+        <span class="constellation__label">Agentes</span>
+      </div>
+      <div class="constellation__node" style="top:250px;left:630px;">
+        <div class="constellation__dot" style="color:var(--accent-papers);background:var(--accent-papers);"></div>
+        <span class="constellation__label">Papers</span>
+      </div>
+      <div class="constellation__node" style="top:420px;left:580px;">
+        <div class="constellation__dot" style="color:var(--accent-product);background:var(--accent-product);"></div>
+        <span class="constellation__label">Product</span>
+      </div>
+      <div class="constellation__node" style="top:460px;left:350px;">
+        <div class="constellation__dot" style="color:var(--accent-igniters);background:var(--accent-igniters);"></div>
+        <span class="constellation__label">Igniters</span>
+      </div>
+      <div class="constellation__node" style="top:420px;left:120px;">
+        <div class="constellation__dot" style="color:var(--accent-iafacil);background:var(--accent-iafacil);"></div>
+        <span class="constellation__label">IA Fácil para Todos</span>
+      </div>
+      <div class="constellation__node" style="top:250px;left:70px;">
+        <div class="constellation__dot" style="color:var(--accent-vibe);background:var(--accent-vibe);"></div>
+        <span class="constellation__label">Vibe Engineering</span>
+      </div>
+      <div class="constellation__node" style="top:80px;left:120px;">
+        <div class="constellation__dot" style="color:var(--accent-art);background:var(--accent-art);"></div>
+        <span class="constellation__label">Art</span>
+      </div>
+      <div class="constellation__node" style="top:140px;left:200px;">
+        <div class="constellation__dot" style="color:var(--accent-retos);background:var(--accent-retos);"></div>
+        <span class="constellation__label">Retos IA</span>
+      </div>
+      <div class="constellation__node" style="top:140px;left:500px;">
+        <div class="constellation__dot" style="color:var(--accent-podcast);background:var(--accent-podcast);"></div>
+        <span class="constellation__label">Podcast</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 10: AI TINKERERS ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_6707.jpeg" alt="" loading="lazy" style="filter:brightness(0.7);">
+  </div>
+  <div class="slide__overlay" style="background:linear-gradient(90deg, rgba(6,10,18,0.97) 0%, rgba(6,10,18,0.92) 50%, rgba(6,10,18,0.4) 100%);"></div>
+  <div class="program-layout">
+    <div class="program__text">
+      <span class="tag anim" style="align-self:flex-start;">Programa bandera</span>
+      <h2 class="t-h1 anim" style="margin-top:12px;">AI Tinkerers</h2>
+      <p class="t-body anim">Donde los AI builders se encuentran cara a cara. Eventos presenciales mensuales, parte de la red global AI Tinkerers.</p>
+      <div class="divider anim"></div>
+      <div class="format-list anim">
+        <div class="format-item">
+          <div class="format-icon">🎤</div>
+          <p class="t-body">3 presentaciones técnicas de proyectos de IA</p>
+        </div>
+        <div class="format-item">
+          <div class="format-icon">⚡</div>
+          <p class="t-body">Pitches de 40 segundos — cualquiera comparte su idea</p>
+        </div>
+        <div class="format-item">
+          <div class="format-icon">🤝</div>
+          <p class="t-body">Networking + "remate" en bar</p>
+        </div>
+      </div>
+      <div class="cities-row anim" style="margin-top:16px;">
+        <span class="city-badge">Bogotá</span>
+        <span class="city-badge">Medellín</span>
+        <span class="city-badge">Cali</span>
+        <span class="city-badge">Pasto</span>
+        <span class="city-badge">Quito</span>
+        <span class="city-badge">Santiago</span>
+        <span class="city-badge">São Paulo</span>
+      </div>
+      <div class="program__metrics anim">
+        <div class="program__metric"><strong>40+</strong> encuentros</div>
+        <div class="program__metric"><strong>2,000+</strong> builders reunidos</div>
+      </div>
+    </div>
+    <div class="program__visual"></div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 11: AGENTES ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="program-layout program-layout--reverse">
+    <div class="program__text">
+      <span class="tag anim" style="align-self:flex-start;border-color:rgba(139,92,246,0.4);color:var(--accent-agentes);">Investigación</span>
+      <h2 class="t-h1 anim" style="margin-top:12px;">Tribu iA <span class="magenta">Agentes</span></h2>
+      <p class="t-body anim">Explorando la frontera de los agentes autónomos. Cada participante adopta un agente del directorio global (500+), lo explora y presenta hallazgos.</p>
+      <div class="divider anim"></div>
+      <div class="format-list anim">
+        <div class="format-item"><div class="format-icon">1</div><p class="t-body">Registro en el sitio web</p></div>
+        <div class="format-item"><div class="format-icon">2</div><p class="t-body">Elige un agente del directorio global</p></div>
+        <div class="format-item"><div class="format-icon">3</div><p class="t-body">Semanas de exploración: probar, cacharrear, descubrir</p></div>
+        <div class="format-item"><div class="format-icon">4</div><p class="t-body">Presentación semanal de 10 minutos</p></div>
+        <div class="format-item"><div class="format-icon">5</div><p class="t-body">Mejores del mes → talleres especializados</p></div>
+      </div>
+      <div class="program__metrics anim">
+        <div class="program__metric"><strong>45</strong> sesiones</div>
+        <div class="program__metric"><strong>1,400</strong> personas</div>
+        <div class="program__metric"><strong>119</strong> curso básico</div>
+        <div class="program__metric"><strong>80</strong> intermedio</div>
+      </div>
+    </div>
+    <div class="program__visual anim">
+      <img src="../images/community/agentes_intermedio.png" alt="Agentes Intermedio" style="border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 12: PAPERS ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="program-layout">
+    <div class="program__text">
+      <span class="tag anim" style="align-self:flex-start;border-color:rgba(6,182,212,0.4);color:var(--accent-papers);">Estudio profundo</span>
+      <h2 class="t-h1 anim" style="margin-top:12px;">Tribu iA <span class="cyan">Papers</span></h2>
+      <p class="t-body anim">De AI power users a AI value creators. Estudio grupal de los 12 papers fundamentales de LLMs. Sesiones quincenales de 2 horas durante 6 meses.</p>
+      <div class="divider anim"></div>
+      <p class="t-small anim" style="font-style:italic;color:var(--off-white);">En Silicon Valley, al día siguiente de publicarse un paper ya lo están implementando. Nuestro objetivo: replicar esa velocidad en Latam.</p>
+      <div class="format-list anim" style="margin-top:16px;">
+        <div class="format-item"><div class="format-icon">📄</div><p class="t-body"><strong>Hora 1:</strong> Dos voluntarios presentan el paper + discusión grupal</p></div>
+        <div class="format-item"><div class="format-icon">🏆</div><p class="t-body"><strong>Hora 2:</strong> Invitado especial o desafío mensual vía GitHub</p></div>
+      </div>
+      <p class="t-small anim" style="margin-top:16px;">
+        Attention Is All You Need → GPT-2 → InstructGPT → Scaling Laws → Llama-2 → RLAIF → Sparks of AGI → Chain-of-Thought → Toolformer → RAG → Jailbroken → Poisoning Datasets
+      </p>
+      <div class="program__metrics anim">
+        <div class="program__metric"><strong>8</strong> graduados 1ª cohorte</div>
+        <div class="program__metric"><strong>20/140</strong> 2ª cohorte</div>
+      </div>
+    </div>
+    <div class="program__visual anim">
+      <img src="../images/community/virtual_events_youtube.png" alt="YouTube Papers" style="border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 13: PRODUCT ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim" style="border-color:rgba(245,158,11,0.4);color:var(--accent-product);">Producto</span>
+    <h2 class="t-h1 anim" style="margin-top:20px;">Tribu iA <span class="slash">/Product</span></h2>
+    <div class="divider anim" style="margin:24px auto;"></div>
+    <p class="t-body anim" style="max-width:500px;">Construir el producto correcto con IA. Entrenamiento en diseño y desarrollo de productos AI-driven para Product Managers y tech founders.</p>
+    <img src="../images/logo/tribu_ia_Product.png" alt="Tribu iA Product" class="anim" style="height:80px;margin:40px 0;mix-blend-mode:screen;">
+    <div class="program__metrics anim">
+      <div class="program__metric"><strong>20</strong> PMs y tech founders entrenados</div>
+    </div>
+    <p class="t-small anim" style="margin-top:16px;">tribu-ai-scholarship-hub.lovable.app</p>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 14: IGNITERS ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_5566.jpeg" alt="" loading="lazy" style="filter:brightness(0.65);">
+  </div>
+  <div class="slide__overlay" style="background:linear-gradient(90deg, rgba(6,10,18,0.97) 0%, rgba(6,10,18,0.92) 50%, rgba(6,10,18,0.4) 100%);"></div>
+  <div class="program-layout">
+    <div class="program__text">
+      <span class="tag anim" style="border-color:rgba(239,68,68,0.4);color:var(--accent-igniters);">Startups</span>
+      <h2 class="t-h1 anim" style="margin-top:12px;">Igniters</h2>
+      <p class="t-body anim">De la idea a la startup. Conectamos expertos de industria con AI builders para impulsar startups en fases tempranas.</p>
+      <div class="divider anim"></div>
+      <div class="startup-grid anim">
+        <div class="startup-card"><span class="startup-card__name">Catuh.com</span><span class="startup-card__origin">Papers</span></div>
+        <div class="startup-card"><span class="startup-card__name">Ecolegalia</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">In-best</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">Valya</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">Danta</span><span class="startup-card__origin">AI Tinkerers</span></div>
+        <div class="startup-card"><span class="startup-card__name">MiAsesor</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">Beon</span><span class="startup-card__origin">Aceleradora</span></div>
+        <div class="startup-card"><span class="startup-card__name">Invertia</span><span class="startup-card__origin">Aceleradora</span></div>
+        <div class="startup-card"><span class="startup-card__name">Fyllu AI</span><span class="startup-card__origin">Aceleradora</span></div>
+      </div>
+      <p class="t-small anim" style="margin-top:12px;">igniters.carrd.co</p>
+    </div>
+    <div class="program__visual"></div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 15: IA FÁCIL PARA TODOS ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="program-layout program-layout--reverse">
+    <div class="program__text">
+      <span class="tag anim" style="border-color:rgba(16,185,129,0.4);color:var(--accent-iafacil);">Educación accesible</span>
+      <h2 class="t-h1 anim" style="margin-top:12px;">IA Fácil <span style="color:var(--accent-iafacil);">para Todos</span></h2>
+      <p class="t-body anim">Que nadie se quede atrás. Clases semanales de IA desde lo más básico. Todos los lunes a las 7pm.</p>
+      <div class="divider anim" style="background:var(--accent-iafacil);"></div>
+      <p class="t-body anim"><strong>Líder:</strong> Ana Milena Alonso Cantor — Women in AI, Capacitadora en IA</p>
+      <div class="program__metrics anim">
+        <div class="program__metric"><strong>40</strong> clases realizadas en 2025</div>
+      </div>
+      <p class="t-small anim" style="margin-top:12px;">YouTube @anamilenaalonsocantor</p>
+    </div>
+    <div class="program__visual anim">
+      <img src="../images/community/IA_facil.png" alt="IA Fácil" style="border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 16: VIBE ENGINEERING ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="program-layout">
+    <div class="program__text">
+      <span class="tag anim" style="border-color:rgba(236,72,153,0.4);color:var(--accent-vibe);">Para devs</span>
+      <h2 class="t-h1 anim" style="margin-top:12px;">Vibe <span style="color:var(--accent-vibe);">Engineering</span></h2>
+      <blockquote class="anim" style="font:italic 400 clamp(0.9rem,1.2vw,1.1rem)/1.5 var(--font-accent);color:var(--off-white);margin:12px 0;padding-left:16px;border-left:3px solid var(--accent-vibe);">
+        "La disciplina de construir productos y software con IA, combinando velocidad, criterio y rigor técnico."
+      </blockquote>
+      <div class="divider anim" style="background:var(--accent-vibe);"></div>
+      <div class="format-list anim">
+        <div class="format-item"><div class="format-icon">⚡</div><p class="t-body">IA para acelerar el desarrollo end-to-end</p></div>
+        <div class="format-item"><div class="format-icon">📋</div><p class="t-body">Spec-driven development — no prompts sueltos</p></div>
+        <div class="format-item"><div class="format-icon">🏗️</div><p class="t-body">Agentes, copilots y herramientas de AI-DLC</p></div>
+        <div class="format-item"><div class="format-icon">🎯</div><p class="t-body">De "probar cositas" a construir sistemas reales</p></div>
+      </div>
+      <p class="t-body anim" style="margin-top:12px;"><strong>Frecuencia:</strong> Jueves a las 7pm</p>
+      <p class="t-small anim" style="margin-top:8px;color:var(--accent-vibe);">Formamos builders, no watchers.</p>
+    </div>
+    <div class="program__visual anim">
+      <img src="../images/community/virtual_events_luma.png" alt="Vibe Engineering" style="border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 17: ART ━━━ -->
+<section class="slide" data-section="Programas">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_6945.jpeg" alt="" loading="lazy">
+  </div>
+  <div class="slide__overlay ov-duotone"></div>
+  <div class="slide__overlay ov-dark" style="opacity:0.4;"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim" style="border-color:rgba(249,115,22,0.4);color:var(--accent-art);">Arte + IA</span>
+    <h2 class="t-display anim" style="margin-top:20px;">
+      Tribu iA<span class="slash">/</span><span style="color:var(--accent-art);">Art</span>
+    </h2>
+    <p class="t-body anim" style="max-width:550px;margin-top:16px;">
+      Donde el arte y la IA se encuentran. Evento bimensual que conecta artistas, productores audiovisuales y expertos técnicos.
+    </p>
+    <div class="divider anim" style="margin:20px auto;background:var(--accent-art);"></div>
+    <p class="t-body anim" style="max-width:500px;">No hay conferencistas tradicionales: cualquier persona usando IA para crear arte puede postular una charla de 10 minutos.</p>
+    <div style="display:flex;gap:16px;margin-top:24px;" class="anim">
+      <span class="tag">Julián Henao</span>
+      <span class="tag">Juan Duque</span>
+      <span class="tag">Danny Bravo</span>
+    </div>
+    <p class="t-small anim" style="margin-top:16px;">Referente latinoamericano donde arte y tecnología imaginan nuevas narrativas estéticas y éticas.</p>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 18: MAPA LATAM ━━━ -->
+<section class="slide" data-section="Presencia">
+  <div class="slide__bg">
+    <img src="generated/latam_map.png" alt="" loading="lazy" style="opacity:0.35;">
+  </div>
+  <div class="slide__content" style="align-items:center;">
+    <span class="tag anim">Presencia regional</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 24px;">Construyendo desde Latinoamérica <span class="slash">para Latinoamérica</span></h2>
+    <div class="anim" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;max-width:1100px;">
+      <!-- Colombia -->
+      <div>
+        <h3 class="t-h3" style="margin-bottom:16px;">🇨🇴 Colombia <span class="t-small">(7 ciudades)</span></h3>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="card" style="padding:14px 18px;"><strong class="magenta">Bogotá</strong> <span class="t-small">— Sede principal. Globant, Universidad Militar.</span></div>
+          <div class="card" style="padding:14px 18px;"><strong class="magenta">Medellín</strong> <span class="t-small">— EAFIT Nodo, Globant One Plaza.</span></div>
+          <div class="card" style="padding:14px 18px;"><strong class="magenta">Cali</strong> <span class="t-small">— Líder: Andrés González.</span></div>
+          <div class="card" style="padding:14px 18px;"><strong>Eje Cafetero</strong> <span class="t-small">— Women in AI.</span></div>
+          <div class="card" style="padding:14px 18px;"><strong>Pasto</strong> · <strong>Cartagena</strong> · <strong style="color:var(--gray-400);">Popayán</strong></div>
+        </div>
+      </div>
+      <!-- Internacional -->
+      <div>
+        <h3 class="t-h3" style="margin-bottom:16px;">🌎 Internacional <span class="t-small">(4 ciudades)</span></h3>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="card" style="padding:14px 18px;"><strong class="cyan">Quito, Ecuador</strong> <span class="t-small">— AI Tinkerers.</span></div>
+          <div class="card" style="padding:14px 18px;"><strong class="cyan">Santiago, Chile</strong> <span class="t-small">— Comunidad local.</span></div>
+          <div class="card" style="padding:14px 18px;"><strong class="cyan">São Paulo, Brasil</strong> <span class="t-small">— Alianza con Futures.</span></div>
+          <div class="card" style="padding:14px 18px;"><strong style="color:var(--gray-400);">Buenos Aires</strong> <span class="t-small">— En desarrollo.</span></div>
+        </div>
+        <div style="margin-top:24px;">
+          <img src="../images/community/hackathon_cartagena.jpeg" alt="" style="width:100%;border-radius:12px;opacity:0.7;box-shadow:0 12px 40px rgba(0,0,0,0.5);">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 19: EDICIONES ESPECIALES ━━━ -->
+<section class="slide" data-section="Presencia">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="slide__content">
+    <span class="tag anim">AI Tinkerers para todos</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 28px;">Ediciones especiales</h2>
+    <div class="anim" style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:20px;">
+      <div class="card" style="border-left:3px solid var(--magenta);">
+        <h3 class="t-h3" style="color:var(--magenta);">Women Edition</h3>
+        <p class="t-body" style="margin-top:10px;">En alianza con Women in AI Colombia. Hub de Innovación, Universidad Militar Nueva Granada.</p>
+        <p class="t-body" style="margin-top:8px;">Charlas sobre Datafeminismo, IA con perspectiva feminista, app Edia que evalúa sesgos en el lenguaje.</p>
+        <p class="t-small" style="margin-top:12px;color:var(--magenta);">Hito: en Eje Cafetero la asistencia de mujeres superó a la de hombres por primera vez.</p>
+        <img src="../images/community/IMG_5241.jpeg" alt="" style="width:100%;border-radius:10px;margin-top:16px;opacity:0.85;">
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent-iafacil);">
+        <h3 class="t-h3" style="color:var(--accent-iafacil);">Healthcare Edition</h3>
+        <p class="t-body" style="margin-top:10px;">IA aplicada a salud y ciencias. Exploración de casos de uso en medicina y ciencias de la vida.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent-igniters);">
+        <h3 class="t-h3" style="color:var(--accent-igniters);">AI for Bad Edition</h3>
+        <p class="t-body" style="margin-top:10px;">Explorando los riesgos y el lado oscuro de la IA para entenderlo y prevenirlo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 20: MÉTRICAS 2025 ━━━ -->
+<section class="slide" data-section="Impacto">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_3091.jpeg" alt="" loading="lazy">
+  </div>
+  <div class="slide__overlay ov-dark" style="background:rgba(6,10,18,0.92);"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Impacto</span>
+    <h2 class="t-h1 anim" style="margin:16px 0 36px;">2025 en números</h2>
+    <div class="metrics-grid anim">
+      <div class="metric-cell">
+        <div class="metric-cell__num" data-count="109">0</div>
+        <div class="metric-cell__label">eventos virtuales abiertos</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num" data-count="9400">0</div>
+        <div class="metric-cell__label">registros en eventos</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num">40+</div>
+        <div class="metric-cell__label">encuentros presenciales</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num" data-count="2000">0</div>
+        <div class="metric-cell__label">AI builders reunidos</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num" data-count="44000">0</div>
+        <div class="metric-cell__label">vistas en YouTube</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num" data-count="7200">0</div>
+        <div class="metric-cell__label">horas de reproducción</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num">1,500+</div>
+        <div class="metric-cell__label">personas en WhatsApp</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num">40+</div>
+        <div class="metric-cell__label">grupos temáticos</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-cell__num">1,000+</div>
+        <div class="metric-cell__label">impactados en hackathons</div>
+      </div>
+    </div>
+    <p class="t-small anim" style="margin-top:24px;">
+      Conferencistas en: Colombia 4.0 · DevOpsDays · GoFest · CCB TechDay · Senasoft · Startup Week · Mesoamérica
+    </p>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 21: STARTUPS IMPULSADAS ━━━ -->
+<section class="slide" data-section="Impacto">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_4460.jpeg" alt="" loading="lazy">
+  </div>
+  <div class="slide__overlay ov-dark"></div>
+  <div class="slide__content">
+    <span class="tag anim">Resultados tangibles</span>
+    <h2 class="t-h1 anim" style="margin:16px 0;">
+      <span class="slash">9</span> startups nacidas del ecosistema
+    </h2>
+    <div class="anim" style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;margin-top:20px;">
+      <div class="startup-grid">
+        <div class="startup-card"><span class="startup-card__name">Catuh.com</span><span class="startup-card__origin">Papers</span></div>
+        <div class="startup-card"><span class="startup-card__name">Ecolegalia</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">In-best</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">Valya</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">Danta</span><span class="startup-card__origin">AI Tinkerers</span></div>
+        <div class="startup-card"><span class="startup-card__name">MiAsesor.com.co</span><span class="startup-card__origin">Igniters</span></div>
+        <div class="startup-card"><span class="startup-card__name">Beon</span><span class="startup-card__origin">Aceleradora</span></div>
+        <div class="startup-card"><span class="startup-card__name">Invertia</span><span class="startup-card__origin">Aceleradora</span></div>
+        <div class="startup-card"><span class="startup-card__name">Fyllu AI</span><span class="startup-card__origin">Aceleradora</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <h3 class="t-h3">Educación</h3>
+        <div class="card" style="padding:14px;"><strong class="slash">8</strong> <span class="t-small">especialistas graduados en LLMs (1ª cohorte Papers)</span></div>
+        <div class="card" style="padding:14px;"><strong class="slash">20/140</strong> <span class="t-small">destacados 2ª cohorte Papers</span></div>
+        <div class="card" style="padding:14px;"><strong class="slash">119</strong> <span class="t-small">estudiantes curso básico Agentes</span></div>
+        <div class="card" style="padding:14px;"><strong class="slash">80</strong> <span class="t-small">personas curso intermedio Agentes</span></div>
+        <div class="card" style="padding:14px;"><strong class="slash">20</strong> <span class="t-small">Product Managers entrenados</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 22: FUNDADORES ━━━ -->
+<section class="slide" data-section="Comunidad">
+  <div class="slide__bg">
+    <img src="../images/community/c6749662-9b68-449b-abdb-82be9f0e6e72.jpeg" alt="" loading="lazy" style="filter:blur(10px) brightness(0.2);transform:scale(1.05);">
+  </div>
+  <div class="slide__overlay ov-dark" style="opacity:0.5;"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Quiénes iniciaron esto</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 36px;">Fundadores</h2>
+    <div class="founders-grid anim" style="max-width:700px;">
+      <div class="founder">
+        <div class="avatar" style="background:linear-gradient(135deg,var(--magenta),var(--navy));font-size:2rem;">DB</div>
+        <h3 class="t-h3">Danny Bravo</h3>
+        <p class="t-small">Founder, Tribu iA<br>AI Strategist & Speaker<br>AI-driven Product Innovator @ Globant<br>MSc Artificial Intelligence</p>
+      </div>
+      <div class="founder">
+        <div class="avatar" style="background:linear-gradient(135deg,var(--accent-papers),var(--navy));font-size:2rem;">AC</div>
+        <h3 class="t-h3">Andrés Felipe Cosme Hurtado</h3>
+        <p class="t-small">Co-Fundador<br>AI Director @ Teleperformance LATAM<br>Co-founder Cadre AI<br>Organizador AI Tinkerers</p>
+      </div>
+    </div>
+    <blockquote class="t-quote anim" style="margin-top:40px;max-width:600px;">
+      "En las diferentes iniciativas de Tribu iA yo solo pongo la semilla y las personas hacen que <span class="slash">germine.</span>"
+    </blockquote>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 23: LÍDERES DE PROGRAMAS ━━━ -->
+<section class="slide" data-section="Comunidad">
+  <div class="slide__bg" style="background:var(--bg-deep);"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Las personas que hacen que germine</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 28px;">Líderes de programas</h2>
+    <div class="leaders-grid anim">
+      <div class="leader">
+        <div class="avatar" style="background:rgba(139,92,246,0.2);border-color:var(--accent-agentes);color:var(--accent-agentes);">JQ</div>
+        <span class="t-small" style="color:var(--white);">Jamilton Quintero</span>
+        <span class="t-small">Agentes</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(6,182,212,0.2);border-color:var(--accent-papers);color:var(--accent-papers);">AC</div>
+        <span class="t-small" style="color:var(--white);">Andrés Carranza</span>
+        <span class="t-small">Papers</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(16,185,129,0.2);border-color:var(--accent-iafacil);color:var(--accent-iafacil);">AM</div>
+        <span class="t-small" style="color:var(--white);">Ana Milena Alonso</span>
+        <span class="t-small">IA Fácil / Eje Cafetero</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(249,115,22,0.2);border-color:var(--accent-art);color:var(--accent-art);">PP</div>
+        <span class="t-small" style="color:var(--white);">Paula A. Pinzón</span>
+        <span class="t-small">MasterClasses</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(59,130,246,0.2);border-color:var(--accent-tinkerers);color:var(--accent-tinkerers);">AG</div>
+        <span class="t-small" style="color:var(--white);">Andrés M. González</span>
+        <span class="t-small">Tinkerers Cali</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(249,115,22,0.2);border-color:var(--accent-art);color:var(--accent-art);">JH</div>
+        <span class="t-small" style="color:var(--white);">Julián Henao</span>
+        <span class="t-small">Art</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(20,184,166,0.2);border-color:var(--accent-retos);color:var(--accent-retos);">JO</div>
+        <span class="t-small" style="color:var(--white);">John J. Ortiz, M.Sc.</span>
+        <span class="t-small">Retos IA</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(99,102,241,0.2);border-color:var(--accent-podcast);color:var(--accent-podcast);">JG</div>
+        <span class="t-small" style="color:var(--white);">Juan E. García</span>
+        <span class="t-small">Podcast</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(139,92,246,0.2);border-color:var(--accent-agentes);color:var(--accent-agentes);">CC</div>
+        <span class="t-small" style="color:var(--white);">Cristian Córdoba</span>
+        <span class="t-small">Agentes / Medium</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(6,182,212,0.2);border-color:var(--accent-papers);color:var(--accent-papers);">LG</div>
+        <span class="t-small" style="color:var(--white);">Leonardo González</span>
+        <span class="t-small">Papers 2ª cohorte</span>
+      </div>
+      <div class="leader">
+        <div class="avatar" style="background:rgba(249,115,22,0.2);border-color:var(--accent-art);color:var(--accent-art);">JD</div>
+        <span class="t-small" style="color:var(--white);">Juan Duque</span>
+        <span class="t-small">Art</span>
+      </div>
+    </div>
+    <p class="t-small anim" style="margin-top:24px;max-width:500px;">
+      Voluntarios que lideran desde la pasión. Cada programa existe porque alguien levantó la mano.
+    </p>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 24: ALIANZAS — LIGHT THEME ━━━ -->
+<section class="slide slide--light" data-section="Comunidad">
+  <div class="slide__content">
+    <span class="tag anim" style="color:var(--navy);border-color:rgba(27,42,74,0.2);">Con quién construimos</span>
+    <h2 class="t-h2 anim" style="margin:16px 0 28px;">Alianzas y patrocinadores</h2>
+    <div class="anim">
+      <div class="partners-section">
+        <h3 class="t-h3" style="margin-bottom:8px;">Empresas</h3>
+        <div class="partners-row">
+          <span class="partner-badge">Globant</span>
+          <span class="partner-badge">Cadre AI</span>
+          <span class="partner-badge">SyncData.ai</span>
+          <span class="partner-badge">Summan S.A.S</span>
+          <span class="partner-badge">RISCCO Consulting</span>
+          <span class="partner-badge">Fundación Innovación para el Desarrollo</span>
+        </div>
+      </div>
+      <div class="partners-section">
+        <h3 class="t-h3" style="margin-bottom:8px;">Universidades</h3>
+        <div class="partners-row">
+          <span class="partner-badge">EAFIT</span>
+          <span class="partner-badge">Universidad Militar Nueva Granada</span>
+          <span class="partner-badge">Universidad de los Andes</span>
+          <span class="partner-badge">Universidad EAN</span>
+          <span class="partner-badge">Universidad del Rosario</span>
+        </div>
+      </div>
+      <div class="partners-section">
+        <h3 class="t-h3" style="margin-bottom:8px;">Gobierno y eventos</h3>
+        <div class="partners-row">
+          <span class="partner-badge">MinTIC / Colombia 4.0</span>
+          <span class="partner-badge">SENA / Senasoft</span>
+          <span class="partner-badge">Econova</span>
+          <span class="partner-badge">Colsubsidio</span>
+          <span class="partner-badge">DevOpsDays</span>
+          <span class="partner-badge">GoFest</span>
+          <span class="partner-badge">CCB TechDay</span>
+          <span class="partner-badge">Startup Week</span>
+          <span class="partner-badge">Mesoamérica</span>
+          <span class="partner-badge">Web Summit</span>
+        </div>
+      </div>
+      <div class="partners-section">
+        <h3 class="t-h3" style="margin-bottom:8px;">Comunidades aliadas</h3>
+        <div class="partners-row">
+          <span class="partner-badge" style="background:rgba(212,34,87,0.08);border-color:rgba(212,34,87,0.2);">Women in AI Colombia</span>
+          <span class="partner-badge" style="background:rgba(212,34,87,0.08);border-color:rgba(212,34,87,0.2);">Women IT</span>
+          <span class="partner-badge" style="background:rgba(6,182,212,0.08);border-color:rgba(6,182,212,0.2);">Comunidad Futures (Brasil)</span>
+          <span class="partner-badge" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.2);">AI Tinkerers Global</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 25: VISIÓN 2026 ━━━ -->
+<section class="slide" data-section="Visión">
+  <div class="slide__bg">
+    <img src="generated/vision_future.png" alt="" loading="lazy">
+  </div>
+  <div class="slide__overlay ov-dark ov-vignette"></div>
+  <div class="slide__content" style="align-items:center;text-align:center;">
+    <span class="tag anim">Hacia dónde vamos</span>
+    <h2 class="t-h1 anim" style="margin:20px 0;max-width:700px;">
+      Visión <span class="slash">2026</span>
+    </h2>
+    <p class="t-body anim" style="max-width:600px;">
+      Ser la comunidad líder en la exploración y adopción responsable de la inteligencia artificial en Latinoamérica.
+    </p>
+    <div class="divider anim" style="margin:28px auto;"></div>
+    <div class="anim" style="display:flex;flex-direction:column;gap:14px;max-width:550px;text-align:left;">
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span style="color:var(--magenta);font-size:1.2rem;">◆</span>
+        <p class="t-body">Red vibrante de comunidades locales activas en toda Latam</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span style="color:var(--yellow);font-size:1.2rem;">◆</span>
+        <p class="t-body">Ecosistema de startups y proyectos de IA autosostenible</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span style="color:var(--cyan);font-size:1.2rem;">◆</span>
+        <p class="t-body">Programas educativos de alto impacto y reconocimiento</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span style="color:var(--accent-iafacil);font-size:1.2rem;">◆</span>
+        <p class="t-body">Alianzas estratégicas con actores clave del ecosistema</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span style="color:var(--accent-agentes);font-size:1.2rem;">◆</span>
+        <p class="t-body">Referente regional en adopción responsable de IA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SLIDE 26: ÚNETE — CTA ━━━ -->
+<section class="slide" data-section="Cierre">
+  <div class="slide__bg">
+    <img src="../images/community/IMG_4099.jpeg" alt="" loading="lazy">
+  </div>
+  <div class="slide__overlay ov-bottom ov-vignette"></div>
+  <div class="slide__content" style="justify-content:flex-end;padding-bottom:80px;align-items:center;text-align:center;">
+    <img src="../images/logo/Icono tribu IA fondo blanco.png" alt="Tribu iA" class="anim" style="height:64px;mix-blend-mode:screen;margin-bottom:24px;">
+    <h2 class="t-display anim">Sé parte de la <span class="magenta">tribu</span></h2>
+    <p class="t-body anim" style="margin:16px 0 8px;max-width:500px;">
+      El conocimiento no solo fluye, se transforma en valor tangible. Tu próximo paso empieza aquí.
+    </p>
+    <div class="divider anim" style="margin:16px auto;"></div>
+    <div class="cta-links anim" style="max-width:600px;">
+      <div class="cta-link"><span class="cta-link__icon">📅</span> luma.com/tribuia</div>
+      <div class="cta-link"><span class="cta-link__icon">▶️</span> YouTube @TribuiA</div>
+      <div class="cta-link"><span class="cta-link__icon">💼</span> LinkedIn — Tribu IA</div>
+      <div class="cta-link"><span class="cta-link__icon">📸</span> Instagram @tribuia</div>
+      <div class="cta-link"><span class="cta-link__icon">📝</span> Medium — TRIBUIA</div>
+      <div class="cta-link"><span class="cta-link__icon">💬</span> WhatsApp — 40+ grupos</div>
+    </div>
+    <div class="anim" style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;justify-content:center;">
+      <span class="tag">Papers → tribuiapapers.org</span>
+      <span class="tag">Agentes → tribu-ia-academy-rho.vercel.app</span>
+      <span class="tag">Igniters → igniters.carrd.co</span>
+    </div>
+  </div>
+</section>
+
+</div><!-- end .deck -->
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT ENGINE
+     ═══════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  const deck = {
+    current: 0,
+    slides: [],
+    total: 0,
+    animating: false,
+
+    init() {
+      this.slides = Array.from(document.querySelectorAll('.slide'));
+      this.total = this.slides.length;
+      this.buildNav();
+      this.bindEvents();
+      this.goTo(0, false);
+    },
+
+    buildNav() {
+      const dots = document.getElementById('navDots');
+      for (let i = 0; i < this.total; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot';
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => this.goTo(i));
+        dots.appendChild(dot);
+      }
+    },
+
+    bindEvents() {
+      document.addEventListener('keydown', (e) => {
+        if (this.animating) return;
+        switch(e.key) {
+          case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown':
+            e.preventDefault(); this.next(); break;
+          case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+            e.preventDefault(); this.prev(); break;
+          case 'Home': e.preventDefault(); this.goTo(0); break;
+          case 'End': e.preventDefault(); this.goTo(this.total - 1); break;
+          case 'f': case 'F':
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+            else document.exitFullscreen();
+            break;
+        }
+      });
+
+      // Touch
+      let tx = 0;
+      document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
+      document.addEventListener('touchend', e => {
+        const d = tx - e.changedTouches[0].clientX;
+        if (Math.abs(d) > 50) d > 0 ? this.next() : this.prev();
+      }, {passive: true});
+
+      // Click navigation
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('.nav-dots, .cta-link, a, button, .tag')) return;
+        e.clientX > window.innerWidth * 0.7 ? this.next() :
+        e.clientX < window.innerWidth * 0.3 ? this.prev() : null;
+      });
+    },
+
+    goTo(index, animate = true) {
+      if (index < 0 || index >= this.total) return;
+      if (animate && this.animating) return;
+
+      if (animate) {
+        this.animating = true;
+        setTimeout(() => { this.animating = false; }, 900);
+      }
+
+      this.slides.forEach((s, i) => {
+        s.classList.toggle('active', i === index);
+      });
+
+      this.current = index;
+      this.updateUI();
+
+      // Counter animations
+      if (animate) this.animateCounters(this.slides[index]);
+    },
+
+    next() { this.goTo(this.current + 1); },
+    prev() { this.goTo(this.current - 1); },
+
+    updateUI() {
+      // Progress
+      document.getElementById('progress').style.width =
+        `${((this.current + 1) / this.total) * 100}%`;
+
+      // Counter text
+      document.getElementById('counter').textContent =
+        `${String(this.current + 1).padStart(2, '0')} / ${this.total}`;
+
+      // Nav dots
+      document.querySelectorAll('.nav-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === this.current);
+      });
+
+      // Logo visibility on light slide
+      const isLight = this.slides[this.current].classList.contains('slide--light');
+      document.querySelector('.logo-container').style.filter =
+        isLight ? 'invert(0) brightness(0.3)' : '';
+      document.querySelector('.logo-container img').style.mixBlendMode =
+        isLight ? 'multiply' : 'screen';
+
+      // Counter color on light slide
+      document.getElementById('counter').style.color =
+        isLight ? 'var(--navy)' : '';
+
+      // Section label
+      const section = this.slides[this.current].dataset.section || '';
+      let label = document.getElementById('sectionLabel');
+      if (!label) {
+        label = document.createElement('div');
+        label.id = 'sectionLabel';
+        label.className = 'section-label';
+        document.body.appendChild(label);
+      }
+      label.textContent = section;
+      label.style.color = isLight ? 'var(--navy)' : '';
+    },
+
+    animateCounters(slide) {
+      slide.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        let start = 0;
+        const duration = 1200;
+        const startTime = performance.now();
+
+        function tick(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(eased * target);
+          el.textContent = current.toLocaleString('es-CO') + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => deck.init());
+})();
+</script>
+
+</body>
+</html>
